@@ -1,0 +1,89 @@
+/* Reset mặc định của trình duyệt */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Căn giữa nội dung */
+.container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ô nhập và nút Join */
+.container_join {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Danh sách tin nhắn */
+#ul_message {
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+#ul_message li {
+    /* padding: 8px;
+    background: #e3e3e3;
+    border-radius: 5px;
+    margin-bottom: 5px; */
+    padding: 10px;
+    background: #e3e3e3;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    width: fit-content; 
+    max-width: 80%;
+    word-wrap: break-word;
+    clear: both;
+}
+.right{
+    float: right !important;
+}
+
+/* Ô nhập tin nhắn */
+#ip_message {
+    width: calc(100% - 80px);
+    display: inline-block;
+}
+
+#btn_send {
+    width: 70px;
+    margin-left: 5px;
+}
