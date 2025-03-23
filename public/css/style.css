@@ -1,0 +1,82 @@
+body,
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: aquamarine;
+}
+
+.container {
+  width: 400px;
+  height: 100vh;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: azure;
+}
+
+.container_join {
+  width: 100%;
+  height: 5%;
+  display: flex;
+}
+
+.container_join input {
+  width: 40%;
+  padding: 10px;
+}
+
+.container_join button {
+  width: 20%;
+  padding: 10px;
+}
+
+.container_send {
+  width: 100%;
+  height: 5%;
+  display: flex;
+}
+
+#ip_message {
+  width: 80%;
+  padding: 10px;
+}
+
+#btn_send {
+  width: 20%;
+  padding: 10px;
+}
+
+#ul_message {
+  list-style: none;
+  width: 100%;
+  height: 90%;
+  overflow: scroll;
+  width: calc(100% - 10px); /* Giảm 10px để trừ đi 5px mỗi bên */
+  padding: 5px; /* Thêm padding để các tin nhắn không sát lề */
+}
+
+#ul_message li {
+  width: fit-content;
+  background-image: linear-gradient(
+    to right,
+    rgb(204, 0, 255),
+    rgb(220, 110, 235)
+  );
+  margin-top: 5px;
+  padding: 5px;
+  color: white;
+  border-radius: 8px;
+  float: left;
+  clear: both;
+  margin-left: 5px; /* Cách lề trái 5px */
+  margin-right: 5px; /* Cách lề phải 5px */
+}
+
+.right {
+  float: right !important;
+  background-image: linear-gradient(to right, blue, purple);
+  margin-left: 5px; /* Cách lề trái 5px */
+  margin-right: 5px; /* Cách lề phải 5px */
+}

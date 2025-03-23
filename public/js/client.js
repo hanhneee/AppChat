@@ -9,27 +9,53 @@ const ul_message = document.getElementById("ul_message");
 
 var socket = io.connect();
 
-//on: han  emit: gui di
+let my_name = "";
+//on: nhan  emit: gui di
 socket.on("connect", function () {
   console.log("Connected to server!");
 });
 
 //Lay id phong ra der gui den server
 btn_join.addEventListener("click", () => {
-//   const name = ip_name.value
+  my_name = ip_name.value;
   const room = ip_room.value;
   socket.emit("join", room);
+  alert(`Join room ${room} success`);
 });
 
-//Lay tin nhan ra de gui den Server
-btn_send.addEventListener("click", () => {
-    const name = ip_name.value
-  const message = ip_message.value;
-  socket.emit("message", name + ": " + message);
-});
+//Ham gui tin nhan den server
+const sendMessage = ()=>{
+    const message = ip_message.value;
+  if (!message) {
+    return;
+  }
+  const obj = {
+    name: my_name,
+    message: message,
+  };
+  socket.emit("message", JSON.stringify(obj));
+  ip_message.value = "";
+  ip_message.focus();
+}
 
+//Gui tin nhan bang nut Send
+btn_send.addEventListener("click", sendMessage);
+
+//Gui tin nhan bang nut Enter
+ip_message.addEventListener('keydown',(event)=>{
+    if(event.key === "Enter"){
+        sendMessage()
+    }
+})
+
+
+//Nhan tin nhan tu server
 socket.on("thread", function (data) {
+  const obj = JSON.parse(data);
   const li = document.createElement("li");
-  li.innerHTML = data;
+  li.innerHTML = obj.message;
+  if (obj.name === my_name) {
+    li.classList.add("right");
+  }
   ul_message.appendChild(li);
 });
