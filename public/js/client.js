@@ -1,4 +1,4 @@
-const ip_name = document.getElementById("name")
+// const ip_name = document.getElementById("name")
 const ip_room = document.getElementById("room")
 const btn_join = document.getElementById("btn_join")
 
@@ -8,7 +8,7 @@ const ul_message = document.getElementById("ul_message")
 
 var socket = io.connect()
 
-let my_name = ""
+let my_name = localStorage.getItem("username")
 
 socket.on("connect", function (data) {
     console.log(data);
@@ -16,7 +16,7 @@ socket.on("connect", function (data) {
 
 btn_join.addEventListener('click', () => {
     const room = ip_room.value
-    my_name = ip_name.value
+    // my_name = ip_name.value
     socket.emit("join", room)
     alert('Vao phong thanh cong')
 })
