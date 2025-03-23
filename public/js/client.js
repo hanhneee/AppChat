@@ -54,5 +54,7 @@ socket.on("thread", function (data) {
         li.classList.add("right")
     }
 
-    ul_message.appendChild(li)
+    ul_message.appendChild(li);
+    // lăn xuống mess vừa gửi
+    ul_message.scrollTop = ul_message.scrollHeight
 })
