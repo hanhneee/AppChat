@@ -24,8 +24,8 @@ btn_join.addEventListener("click", () => {
 });
 
 //Ham gui tin nhan den server
-const sendMessage = ()=>{
-    const message = ip_message.value;
+const sendMessage = () => {
+  const message = ip_message.value;
   if (!message) {
     return;
   }
@@ -36,18 +36,17 @@ const sendMessage = ()=>{
   socket.emit("message", JSON.stringify(obj));
   ip_message.value = "";
   ip_message.focus();
-}
+};
 
 //Gui tin nhan bang nut Send
 btn_send.addEventListener("click", sendMessage);
 
 //Gui tin nhan bang nut Enter
-ip_message.addEventListener('keydown',(event)=>{
-    if(event.key === "Enter"){
-        sendMessage()
-    }
-})
-
+ip_message.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    sendMessage();
+  }
+});
 
 //Nhan tin nhan tu server
 socket.on("thread", function (data) {
@@ -58,4 +57,5 @@ socket.on("thread", function (data) {
     li.classList.add("right");
   }
   ul_message.appendChild(li);
+  ul_message.scrollTop = ul_message.scrollHeight;
 });
