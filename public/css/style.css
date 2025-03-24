@@ -1,0 +1,88 @@
+body,*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: antiquewhite;
+}
+
+.container{
+    width: 400px;
+    height: 100vh;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: azure;
+    box-sizing: border-box;
+}
+.container_join{
+    width: 100%;
+    height: 5%;
+    display: flex;
+}
+.container_join input{
+    width: 80%;
+    padding: 10px;
+}
+.container button{
+    width: 20%;
+    padding: 10px;
+}
+
+#ul_message{
+    list-style: none;
+    width: 100%;
+    height: 90%;
+    overflow: scroll;
+}
+
+#ul_message li{
+    width: fit-content;
+    background-image: linear-gradient(rgb(71, 179, 187),rgb(184, 184, 75),rgb(59, 159, 166));
+    margin-top: 5px;
+    padding: 5px;
+    color: wheat;
+    border-radius: 10px;
+    float: left;
+    clear: both;
+}
+
+.right {
+    float: right !important;
+}
+
+.container_send{
+    width: 100%;
+    display: flex;
+}
+
+#ip_message{
+    width: 80%;
+    padding: 10px;
+}
+
+#btn_send{
+    width: 20%;
+    padding: 10px;
+    height: 5%;
+}
+
+/* List user css */
+.list_user{
+    list-style: none;
+    background-color: azure;
+    width: 30%;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100vh;
+    overflow: scroll;
+}
+.list_user li{
+    background-color: cyan;
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 10px;
+}
+.list_user li div{
+    display: flex;
+}

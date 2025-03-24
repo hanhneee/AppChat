@@ -1,4 +1,3 @@
-const ip_name = document.getElementById("name")
 const ip_room = document.getElementById("room")
 const btn_join = document.getElementById("btn_join")
 
@@ -9,6 +8,8 @@ const ul_message = document.getElementById("ul_message")
 
 var socket = io.connect()
 
+let my_name = localStorage.getItem("username");
+
 socket.on("connect", function(data){
    console.log(data)
 })
@@ -16,16 +17,41 @@ socket.on("connect", function(data){
 btn_join.addEventListener("click",()=>{
     const room = ip_room.value
     socket.emit("join", room)
+    alert(`Join room ${room} thành công *()*`)
 })
 
-btn_send.addEventListener("click", ()=>{
+const sendMessage = ()=>{
     const message = ip_message.value
-    const name = ip_name.value
-    socket.emit("message", name + ":"  + message)
+    if(!message){
+        return;
+    }
+    const obj = {
+        name: my_name,
+        message: message
+    }
+    socket.emit("message", JSON.stringify(obj))
+    ip_message.value = '';
+    ip_message.focus();
+}
+
+btn_send.addEventListener("click", sendMessage)
+
+
+ip_message.addEventListener('keydown',(event)=>{
+    if(event.key === "Enter"){
+        sendMessage()
+    }
 })
 
 socket.on("thread", function(data){
+    const obj = JSON.parse(data)
+
     const li = document.createElement("li")
-    li.innerHTML = data;
+    li.innerHTML = obj.message;
+
+    if(obj.name === my_name){
+        li.classList.add("right");
+    }
     ul_message.appendChild(li)
+    ul_message.scrollTop = ul_message.scrollHeight;
 })
