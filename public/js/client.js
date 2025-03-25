@@ -54,10 +54,39 @@ ip_message.addEventListener("keydown", (event) => {
 socket.on("thread", function (data) {
   const obj = JSON.parse(data);
   const li = document.createElement("li");
-  li.innerHTML = obj.message;
+  li.innerHTML = `<span>${obj.message}</span>
+   <i onclick="show(event)" class="choose_emotion fa-solid fa-face-smile" style="color: white"></i>
+  `;
   if (obj.name === my_name) {
     li.classList.add("right");
   }
   ul_message.appendChild(li);
   ul_message.scrollTop = ul_message.scrollHeight;
+  // loadChooseEmotion();
 });
+
+function show(e) {
+  if (e.target.classList.contains("choose_emotion")) {
+    if (e.target.innerHTML.toString().trim().length === 0) {
+      e.target.innerHTML = `
+    <div class="emotions">
+             <i class="fa-solid fa-heart"></i>
+             <i class="fa-solid fa-face-laugh-beam"></i>
+             <i class="fa-solid fa-face-sad-tear"></i>
+             <i class="fa-solid fa-face-rolling-eyes"></i>
+           </div>
+   `;
+    } else {
+      e.target.innerHTML = ``;
+    }
+  }
+}
+
+// function loadChooseEmotion() {
+//   const choose_emotion = document.getElementsByClassName("choose_emotion");
+//   for (let ce of choose_emotion) {
+//     ce.addEventListener("click", (e) => {
+
+//     });
+//   }
+// }
