@@ -9,11 +9,12 @@ body {
 }
 
 .container {
-  width: 400px;
+  width: 70%;
   height: 98.5vh;
   margin: 0 auto;
   box-sizing: border-box;
-  background-color: azure;
+  /* background-color: azure; */
+  background-color: #1c1e21;
 }
 
 .container_join {
@@ -79,4 +80,27 @@ body {
   background-image: linear-gradient(to right, blue, purple);
   margin-left: 5px; /* Cách lề trái 5px */
   margin-right: 5px; /* Cách lề phải 5px */
+}
+
+/* LIST USER CSS */
+.list_user {
+  width: 30%;
+  list-style: none;
+  padding: 20px;
+  /* background-color: azure; */
+  background-color: #1c1e21;
+  height: 100vh;
+  overflow: scroll;
+  box-sizing: border-box;
+}
+
+.list_user li {
+  background-color: beige;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.list_user li div {
+  display: flex;
 }

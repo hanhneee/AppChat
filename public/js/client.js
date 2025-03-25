@@ -1,4 +1,4 @@
-const ip_name = document.getElementById("name");
+// const ip_name = document.getElementById("name");
 const ip_room = document.getElementById("room");
 const ip_message = document.getElementById("ip_message");
 
@@ -9,7 +9,9 @@ const ul_message = document.getElementById("ul_message");
 
 var socket = io.connect();
 
-let my_name = "";
+// let my_name = "";
+let my_name = localStorage.getItem("username");
+
 //on: nhan  emit: gui di
 socket.on("connect", function () {
   console.log("Connected to server!");
@@ -17,7 +19,7 @@ socket.on("connect", function () {
 
 //Lay id phong ra der gui den server
 btn_join.addEventListener("click", () => {
-  my_name = ip_name.value;
+  // my_name = ip_name.value;
   const room = ip_room.value;
   socket.emit("join", room);
   alert(`Join room ${room} success`);
