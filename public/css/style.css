@@ -10,7 +10,7 @@ body {
 
 .container {
   width: 400px;
-  height: 100vh;
+  height: 98.5vh;
   margin: 0 auto;
   box-sizing: border-box;
   background-color: azure;
@@ -23,7 +23,7 @@ body {
 }
 
 .container_join input {
-  width: 40%;
+  width: 80%;
   padding: 10px;
 }
 
