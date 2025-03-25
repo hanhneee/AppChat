@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="container">
+        <caption>
+            <h1>Register</h1>
+        </caption>
+        <input type="text" name="username" id="ip_username2" placeholder="Nhập username">
+        <br>
+        <input type="password" name="password" id="ip_password2" placeholder="Nhập password">
+        <br>
+        <input type="password" name="password" id="ip_password22" placeholder="Nhập lại password">
+        <br>
+        <input type="text" name="full_name" id="ip_full_name" placeholder="Nhập họ tên">
+        <button id="btn_register">Đăng ký</button>
+    </div>
+
+    <p>Đã có tài khoản? <a href="/login">Đăng nhập ngay</a></p>
+
+    <script>
+        const btn_register = document.getElementById('btn_register');
+        const ip_username2 = document.getElementById('ip_username2');
+        const ip_password2 = document.getElementById('ip_password2');
+        const ip_password22 = document.getElementById('ip_password22');
+        const ip_full_name = document.getElementById('ip_full_name');
+    
+        btn_register.addEventListener('click', () => {
+            const username = ip_username2.value.trim();
+            const password = ip_password2.value.trim();
+            const password2 = ip_password22.value.trim();
+            const full_name = ip_full_name.value.trim();
+    
+            // Kiểm tra nếu có ô nào bị bỏ trống
+            if (!username || !password || !password2 || !full_name) {
+                alert("Vui lòng nhập đầy đủ thông tin!");
+                return;
+            }
+    
+            // Kiểm tra mật khẩu có trùng khớp không
+            if (password !== password2) {
+                alert("Mật khẩu không trùng khớp!");
+                return;
+            }
+    
+            fetch('/api/accounts/register', {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify({ username, password, full_name })
+            })
+            .then(res => res.json())
+            .then(result => {
+                if (result.statusCode) {
+                    alert(result.message);
+                } else {
+                    alert("Đăng ký thành công! Hãy đăng nhập.");
+                    window.location.href = "/login"; 
+                }
+            })
+            .catch(error => {
+                alert("Lỗi: " + error.message);
+            });
+        });
+    </script>
+    
+</body>
+</html>

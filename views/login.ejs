@@ -1,117 +1,54 @@
-<div>
-    <caption>
-        <h1>Login</h1>
-    </caption>
-    <input type="text" name="username" id="ip_username" placeholder="nhap username">
-    <br>
-    <input type="text" name="password" id="ip_password" placeholder="nhap password">
-    <button id="btn_login">Dang nhap</button>
-</div>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="container">
+        <caption>
+            <h1>Login</h1>
+        </caption>
+        <input type="text" name="username" id="ip_username" placeholder="Nhập username">
+        <br>
+        <input type="password" name="password" id="ip_password" placeholder="Nhập password">
+        <button id="btn_login">Đăng nhập</button>
+    </div>
 
-<div>
-    <caption>
-        <h1>Register</h1>
-    </caption>
-    <input type="text" name="username" id="ip_username2" placeholder="nhap username">
-    <br>
-    <input type="text" name="password" id="ip_password2" placeholder="nhap password">
-    <br>
-    <input type="text" name="password" id="ip_password22" placeholder="nhap lai password">
-    <br>
-    <input type="text" name="full_name" id="ip_full_name" placeholder="nhap ho ten">
-    <button id="btn_register">Dang ky</button>
-</div>
+    <p>Chưa có tài khoản? <a href="/register">Đăng ký ngay</a></p>
 
+    <script>
+        const btn_login = document.getElementById('btn_login');
+        const ip_username = document.getElementById('ip_username');
+        const ip_password = document.getElementById('ip_password');
 
+        btn_login.addEventListener('click', () => {
+            const username = ip_username.value;
+            const password = ip_password.value;
 
-<script>
-    // dang nhap
-    const btn_login = document.getElementById('btn_login')
-    const ip_username = document.getElementById('ip_username')
-    const ip_password = document.getElementById('ip_password')
-
-    btn_login.addEventListener('click', () => {
-        const username = ip_username.value
-        const password = ip_password.value
-
-        const obj = {
-            username: username,
-            password: password
-        }
-
-        fetch('/api/accounts/login', {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: "POST",
-            body: JSON.stringify(obj)
-        })
+            fetch('/api/accounts/login', {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "POST",
+                body: JSON.stringify({ username, password })
+            })
             .then(res => res.json())
             .then(result => {
                 if (result.statusCode) {
-                    alert(result.message)
+                    alert(result.message);
                 } else {
-                    localStorage.setItem('username', result.username)
-                    window.location = '/chat'
+                    localStorage.setItem('username', result.username);
+                    window.location = '/chat';
                 }
-
             })
             .catch(error => {
-                alert("Error: " + error.message)
-            }
-            )
-    })
-</script>
-
-<script>
-    // dang ky
-    const btn_register = document.getElementById('btn_register')
-    const ip_username2 = document.getElementById('ip_username2')
-    const ip_password2 = document.getElementById('ip_password2')
-    const ip_password22 = document.getElementById('ip_password22')
-    const ip_full_name = document.getElementById('ip_full_name')
-
-    btn_register.addEventListener('click', () => {
-        const username = ip_username2.value
-        const password = ip_password2.value
-        const password2 = ip_password22.value
-        const full_name = ip_full_name.value
-
-        if (password !== password2) {
-            alert("Mat khau khong trung khop")
-            return;
-        }
-
-        const obj = {
-            username,
-            password,
-            full_name
-        }
-
-        fetch('/api/accounts/register', {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: "POST",
-            body: JSON.stringify(obj)
-        })
-            .then(res => res.json())
-            .then(result => {
-                if (result.statusCode) {
-                    alert(result.message)
-                } else {
-                    alert("Dang ky thanh cong. Hay dang nhap.")
-                }
-
-            })
-            .catch(error => {
-                alert("Error: " + error.message)
-                console.log(error);
-                
-            }
-            )
-    })
-
-</script>
+                alert("Error: " + error.message);
+            });
+        });
+    </script>
+</body>
+</html>

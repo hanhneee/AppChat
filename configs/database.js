@@ -9,5 +9,5 @@ const connectDB = async()=>{
         
     }
 }
-
+// Xuất module để sử dụng trong các file khác
 module.exports =connectDB;
