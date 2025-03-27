@@ -21,21 +21,44 @@ document.addEventListener("DOMContentLoaded", () => {
         const room = ip_room.value
         my_name = ip_name.value     //ip_name = input name
         socket.emit("join", room)
+        alert(`Join room ${room} successfully`)
     })
 
-    btn_send.addEventListener("click", () => {
-        const message = ip_message.value
-        const obj = {
-            name: my_name,
-            message: message
+    const sendMessage = ()=>{
+            const message = ip_message.value
+            if (!message){
+                return;
+            }
+            const obj = {
+                name: my_name,
+                message: message
+            }
+            socket.emit("message", JSON.stringify(obj));
+            ip_message.value = ''
+            ip_message.focus();
         }
-        socket.emit("message", JSON.stringify(obj));
-    })
+    
+    
 
+    btn_send.addEventListener("click", sendMessage)
+
+    ip_message.addEventListener('keydown',(event)=>{
+        if (event.key === "Enter"){
+            sendMessage()
+        }
+    })
     socket.on("thread", function (data) {
+        const obj = JSON.parse(data)
+
         const li = document.createElement("li")
-        li.innerHTML = data;
+        li.innerHTML = obj.message;
+        if (obj.name === my_name) {
+            li.classList.add("right")
+        }
+
         ul_message.appendChild(li)
+
+        ul_message.scrollTop = ul_message.scrollHeight
     })
 
 })
