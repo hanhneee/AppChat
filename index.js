@@ -27,6 +27,9 @@ io.on("connection",function(client){
     client.on("message", function(data){
         io.to(room).emit("thread",data)
     })
+    client.on("emotion", function(data){
+        io.to(room).emit("emotion", data)
+    })
 })
 
 connectDB();
