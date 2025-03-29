@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <div style="display: flex;">
     <ul class="list_user">
         <% accounts.forEach(account => {%>
@@ -22,19 +23,43 @@
             <button id="btn_join">Join</button>
         </div>
 
+    
         <ul id="ul_message">
-            <li>Chao</li>
-            <li>Chao</li>
-            <li>Ban co khoe khong</li>
-            <li>Toi on</li>
-            <li class="right">Lau ngay khong gap</li>
-            <li>U</li>
-            <li>Bye</li>
-            <li>Cut</li>
+            <div class="image_user">
+                <img src="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/09/anh-nen-dien-thoai-4k-25.jpg" alt="" id="img_user" name="img_user">
+                <p>User người dùng</p>
+            </div>
+            <!-- <li>
+                <span>
+                    <p>tin nhan</p>
+                </span>
+                <i onclick="show(event)" class="choose_emotion fa-solid fa-face-smile-beam"></i>
+            </li>
+            <li>
+                <span>
+                    <p>tin nhan</p>
+                </span>
+                <i onclick="show(event)" class="choose_emotion fa-solid fa-face-smile-beam"></i>
+            </li>
+            <li class="right">
+                <span>
+                    <p>tin nhan</p>
+                </span>
+                <i onclick="show(event)" class="choose_emotion fa-solid fa-face-smile-beam"></i>
+            </li>
+            <li>
+                <span>
+                    <p>tin nhan</p>
+                </span>
+                <i onclick="show(event)" class="choose_emotion fa-solid fa-face-smile-beam"></i>
+            </li> -->
+            
         </ul>
 
         <div class="container_send">
             <input type="text" id="ip_message" placeholder="message">
+            <img style="width: 20%; display: none;" alt="">
+            <input style="width: 20%;" type="file" id="ip_image">
             <button id="btn_send">Gửi</button>
         </div>
     </div>
