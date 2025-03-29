@@ -37,9 +37,18 @@ body{
 }
 
 #ul_message li{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+#ul_message li span{
+    position: relative;
+}
+
+#ul_message li span p{
     width: fit-content;
     background-image: linear-gradient(rgb(71, 179, 187),rgb(184, 184, 75),rgb(59, 159, 166));
-    margin-top: 5px;
     padding: 5px;
     color: wheat;
     border-radius: 10px;
@@ -47,8 +56,40 @@ body{
     clear: both;
 }
 
+#ul_message li:hover .choose_emotion{
+    display: block !important;
+}
+.choose_emotion{
+    margin: 0 5px;
+    display: none !important;
+    position: relative;
+}
+
+.emtions {
+    display: flex;
+    background-color: #333;
+    padding: 5px;
+    border-radius: 12px;
+    position: absolute;
+    bottom: 20px;
+
+}
+.emtions i{
+    margin: 5px;
+    transition: linear 0.2s;
+}
+
+.emtions i:hover{
+    transform: scale(1.5);
+}
+
+
 .right {
-    float: right !important;
+    flex-direction: row-reverse;
+}
+ 
+.right .choose_emotion .emtions{
+    right: 5px;
 }
 
 .container_send{
@@ -85,4 +126,17 @@ body{
 }
 .list_user li div{
     display: flex;
+}
+
+.image_user img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin: 5px auto;
+}
+
+.image_user p {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
 }
